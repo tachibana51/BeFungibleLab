@@ -9,6 +9,10 @@
 -  **Step Mode**: Debug your Befunge programs step-by-step to better understand their execution.
 -  **Grid and Stack Manipulation**: Built-in commands for interacting with the Befunge 2D grid and stack.
 
+
+https://github.com/user-attachments/assets/54f90577-e00e-4dc8-86e5-e314553773b5
+
+
 ## Supported Commands
 
 BeFungibleLab supports a variety of commands based on the Befunge language. Here is a list of supported commands and their descriptions:
