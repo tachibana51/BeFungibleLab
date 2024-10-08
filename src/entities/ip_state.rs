@@ -5,7 +5,7 @@ use crate::entities::Direction;
 pub struct IPState {
     pub ip_x: usize,
     pub ip_y: usize,
-    pub direction: Direction, // ここを Direction 型に変更
+    pub direction: Direction,
     pub terminated: bool,
     pub stk: Vec<usize>,
     pub string_mode_active: bool,
