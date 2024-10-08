@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// HorizontalIfCommand は '_' コマンドを実行し、stackのtopで水平方向に条件分岐します。
+
 pub struct HorizontalIfCommand;
 
 impl Command for HorizontalIfCommand {

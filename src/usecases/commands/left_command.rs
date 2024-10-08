@@ -8,7 +8,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// LeftCommand は '<' コマンドを実行し、IP の方向を左に変更します。
+
 pub struct LeftCommand;
 
 impl Command for LeftCommand {

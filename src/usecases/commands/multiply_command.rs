@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// MultiplyCommand は '*' コマンドを実行し、スタックから2つの値を掛けます。
+
 pub struct MultiplyCommand;
 
 impl Command for MultiplyCommand {

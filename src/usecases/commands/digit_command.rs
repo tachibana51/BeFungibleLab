@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// DigitCommand は '0' から '9' のコマンドを実行し、対応する数字をスタックにプッシュします。
+
 pub struct DigitCommand {
     value: usize,
 }

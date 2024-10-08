@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// SwapCommand は '\' コマンドを実行し、スタックのトップ2つの値を交換します。
+
 pub struct SwapCommand;
 
 impl Command for SwapCommand {

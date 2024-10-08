@@ -8,7 +8,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// DownCommand は 'v' コマンドを実行し、IP の方向を下に変更します。
+
 pub struct DownCommand;
 
 impl Command for DownCommand {

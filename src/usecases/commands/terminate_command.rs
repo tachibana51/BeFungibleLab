@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// TerminateCommand は '@' コマンドを実行し、IPを終了します。
+
 pub struct TerminateCommand;
 
 impl Command for TerminateCommand {

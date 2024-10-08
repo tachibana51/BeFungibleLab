@@ -4,7 +4,7 @@ use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
 use std::sync::{Arc, Mutex};
 
-/// GraterThanCommand は '`' コマンドを実行し、IPを移動させます。
+
 pub struct GraterThanCommand;
 
 impl Command for GraterThanCommand {

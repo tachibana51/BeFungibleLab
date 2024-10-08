@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// VertIfCommand は '|' コマンドを実行し、stackのtopで垂直方向に条件分岐します。
+
 pub struct VerticalIfCommand;
 
 impl Command for VerticalIfCommand {

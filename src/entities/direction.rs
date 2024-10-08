@@ -9,7 +9,6 @@ pub enum Direction {
 }
 
 impl Direction {
-    /// 方向に応じた dx を返します。
     pub fn dx(&self) -> isize {
         match self {
             Direction::Right => 1,
@@ -19,7 +18,6 @@ impl Direction {
         }
     }
 
-    /// 方向に応じた dy を返します。
     pub fn dy(&self) -> isize {
         match self {
             Direction::Right => 0,

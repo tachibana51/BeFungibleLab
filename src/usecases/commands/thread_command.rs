@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// ThreadCommand は 't' コマンドを実行し、新しいIPを生成します。
+
 pub struct ThreadCommand;
 
 impl Command for ThreadCommand {

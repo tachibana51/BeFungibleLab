@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-// GetCommand は 'g' コマンドを実行し、(x,y)から値をgetし,pushします
+
 pub struct GetCommand;
 
 impl Command for GetCommand {

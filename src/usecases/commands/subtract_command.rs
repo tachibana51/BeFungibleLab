@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// SubtractCommand は '-' コマンドを実行し、スタックから2つの値を引きます。
+
 pub struct SubtractCommand;
 
 impl Command for SubtractCommand {

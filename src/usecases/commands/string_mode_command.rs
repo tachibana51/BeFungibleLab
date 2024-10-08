@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// StringModeCommand は '"' コマンドを実行し、文字列モードをトグルします。
+
 pub struct StringModeCommand;
 
 impl Command for StringModeCommand {

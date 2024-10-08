@@ -4,7 +4,7 @@ use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
 use std::sync::{Arc, Mutex};
 
-/// ReadNumber は '&' コマンドを実行し、IPを移動させます。
+
 pub struct ReadNumberCommand;
 
 impl Command for ReadNumberCommand {

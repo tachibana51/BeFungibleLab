@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// DropCommand は '$' コマンドを実行し、スタックのトップの値を削除します。
+
 pub struct DropCommand;
 
 impl Command for DropCommand {

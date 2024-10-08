@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// PrintCharCommand は ',' コマンドを実行し、スタックのトップの値を文字として出力します。
+
 pub struct PrintCharCommand;
 
 impl Command for PrintCharCommand {

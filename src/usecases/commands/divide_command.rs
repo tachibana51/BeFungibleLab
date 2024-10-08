@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// DivideCommand は '/' コマンドを実行し、スタックから2つの値を割ります。
+
 pub struct DivideCommand;
 
 impl Command for DivideCommand {

@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// PrintNumberCommand は '.' コマンドを実行し、スタックのトップの数値を出力します。
+
 pub struct PrintNumberCommand;
 
 impl Command for PrintNumberCommand {

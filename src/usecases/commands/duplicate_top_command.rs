@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// DuplicateTopCommand は ':' コマンドを実行し、スタックのトップの値を複製します。
+
 pub struct DuplicateTopCommand;
 
 impl Command for DuplicateTopCommand {

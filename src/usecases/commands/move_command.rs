@@ -6,7 +6,7 @@ use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
 use std::sync::{Arc, Mutex};
 
-/// MoveCommand は '#' コマンドを実行し、IPを移動させます。
+
 pub struct MoveCommand;
 
 impl Command for MoveCommand {

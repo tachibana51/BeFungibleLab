@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// ModuloCommand は '%' コマンドを実行し、スタックから2つの値の剰余を計算します。
+
 pub struct ModuloCommand;
 
 impl Command for ModuloCommand {

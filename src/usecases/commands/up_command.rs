@@ -8,7 +8,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// UpCommand は '^' コマンドを実行し、IP の方向を上に変更します。
+
 pub struct UpCommand;
 
 impl Command for UpCommand {

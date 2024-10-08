@@ -7,7 +7,7 @@ use crate::interfaces::IOHandle;
 use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
-/// LogicalNotCommand は '!' コマンドを実行し、スタックのトップの値を否定します。
+
 pub struct LogicalNotCommand;
 
 impl Command for LogicalNotCommand {
