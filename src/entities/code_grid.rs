@@ -1,5 +1,3 @@
-// src/entities/program.rs
-
 use std::{
     fs,
     path::Path,
