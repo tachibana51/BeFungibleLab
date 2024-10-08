@@ -61,10 +61,6 @@ The direction commands `→`, `←`, `↑`, and `↓` are used to specify the in
 
 If no initial direction command is specified, the default direction of the IP is set to move `→` (right).
 
-### Example
-
-By placing one of these direction characters (`→`, `←`, `↑`, `↓`) in your Befunge code grid, you can control the initial direction of execution. This is particularly useful for designing programs that require a specific starting flow direction.
-
 ## Installation
 
 To get started with BeFungibleLab, you'll need to have Rust installed. You can install Rust by following the instructions on the [official Rust website](https://www.rust-lang.org/tools/install).
