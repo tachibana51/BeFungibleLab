@@ -101,7 +101,7 @@ impl IOHandle for ConsoleIOHandler {
         ip_x: usize,
         ip_y: usize,
     ) -> Result<(), InterpreterError> {
-        println!("[IP in Grid] : ");
+        println!("[IP on Grid] : ");
         for (y, row) in grid.iter().enumerate() {
             print!("{:5}", y);
             for (x, &cell) in row.iter().enumerate() {
