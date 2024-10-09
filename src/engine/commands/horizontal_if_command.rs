@@ -1,28 +1,30 @@
-// src/usecases/commands/subtract_command.rs
+// src/usecases/commands/horizontal_if_command.rs
 
 use super::command::Command;
-use crate::entities::ip_state::IPState;
+use crate::engine::commands::command::CommandGrid;
+use crate::entities::{ip_state::IPState, Direction};
 use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
-use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
+pub struct HorizontalIfCommand;
 
-pub struct SubtractCommand;
-
-impl Command for SubtractCommand {
+impl Command for HorizontalIfCommand {
     fn execute(
         &self,
         ip: Arc<Mutex<IPState>>,
         interpreter: &dyn CommandGrid,
         _io_handler: Arc<dyn IOHandle + Send + Sync>,
     ) -> Result<(), InterpreterError> {
-        let b = interpreter.pop(ip.clone())? as isize;
-        let a = interpreter.pop(ip.clone())? as isize;
+        let a = interpreter.pop(ip.clone())?;
         let mut ip_locked = ip
             .lock()
             .map_err(|_| InterpreterError::LockError("Failed to lock IPState".to_string()))?;
-        ip_locked.stk.push((a - b) as usize);
+        if a == 0 {
+            ip_locked.direction = Direction::Right
+        } else {
+            ip_locked.direction = Direction::Left
+        };
         Ok(())
     }
 }

@@ -1,31 +1,30 @@
-// src/usecases/commands/vertical_if_command.rs
+// src/usecases/commands/duplicate_top_command.rs
 
 use super::command::Command;
-use crate::entities::{ip_state::IPState, Direction};
+use crate::engine::commands::command::CommandGrid;
+use crate::entities::ip_state::IPState;
 use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
-use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
+pub struct DuplicateTopCommand;
 
-pub struct VerticalIfCommand;
-
-impl Command for VerticalIfCommand {
+impl Command for DuplicateTopCommand {
     fn execute(
         &self,
         ip: Arc<Mutex<IPState>>,
-        interpreter: &dyn CommandGrid,
+        _interpreter: &dyn CommandGrid,
         _io_handler: Arc<dyn IOHandle + Send + Sync>,
     ) -> Result<(), InterpreterError> {
-        let a = interpreter.pop(ip.clone())?;
         let mut ip_locked = ip
             .lock()
             .map_err(|_| InterpreterError::LockError("Failed to lock IPState".to_string()))?;
-        if a == 0 {
-            ip_locked.direction = Direction::Down
+        if let Some(&value) = ip_locked.stk.last() {
+            ip_locked.stk.push(value);
         } else {
-            ip_locked.direction = Direction::Up
-        };
+            ip_locked.stk.push(0);
+            ip_locked.stk.push(0);
+        }
         Ok(())
     }
 }

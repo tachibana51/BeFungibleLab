@@ -1,24 +1,15 @@
-// src/usecases/commands/digit_command.rs
+// src/usecases/commands/string_mode_command.rs
 
 use super::command::Command;
+use crate::engine::commands::command::CommandGrid;
 use crate::entities::ip_state::IPState;
 use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
-use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
+pub struct StringModeCommand;
 
-pub struct DigitCommand {
-    value: usize,
-}
-
-impl DigitCommand {
-    pub fn new(value: usize) -> Self {
-        Self { value }
-    }
-}
-
-impl Command for DigitCommand {
+impl Command for StringModeCommand {
     fn execute(
         &self,
         ip: Arc<Mutex<IPState>>,
@@ -28,7 +19,7 @@ impl Command for DigitCommand {
         let mut ip_locked = ip
             .lock()
             .map_err(|_| InterpreterError::ThreadError("Failed to lock IPState".to_string()))?;
-        ip_locked.stk.push(self.value);
+        ip_locked.string_mode_active = !ip_locked.string_mode_active;
         Ok(())
     }
 }

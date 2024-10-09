@@ -1,17 +1,16 @@
-// src/usecases/commands/right_command.rs
+// src/usecases/commands/up_command.rs
 
 use super::command::Command;
+use crate::engine::commands::command::CommandGrid;
 use crate::entities::ip_state::IPState;
 use crate::entities::Direction;
 use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
-use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
+pub struct UpCommand;
 
-pub struct RightCommand;
-
-impl Command for RightCommand {
+impl Command for UpCommand {
     fn execute(
         &self,
         ip: Arc<Mutex<IPState>>,
@@ -21,7 +20,7 @@ impl Command for RightCommand {
         let mut ip_locked = ip
             .lock()
             .map_err(|_| InterpreterError::ThreadError("Failed to lock IPState".to_string()))?;
-        ip_locked.direction = Direction::Right;
+        ip_locked.direction = Direction::Up;
         Ok(())
     }
 }

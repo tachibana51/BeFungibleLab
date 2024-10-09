@@ -6,7 +6,6 @@ use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
 use std::sync::{Arc, Mutex};
 
-
 pub struct MoveCommand;
 
 impl Command for MoveCommand {

@@ -4,7 +4,6 @@ use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
 use std::sync::{Arc, Mutex};
 
-
 pub struct ReadCharacterCommand;
 
 impl Command for ReadCharacterCommand {

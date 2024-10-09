@@ -1,16 +1,15 @@
-// src/usecases/commands/horizontal_if_command.rs
+// src/usecases/commands/vertical_if_command.rs
 
 use super::command::Command;
+use crate::engine::commands::command::CommandGrid;
 use crate::entities::{ip_state::IPState, Direction};
 use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
-use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
+pub struct VerticalIfCommand;
 
-pub struct HorizontalIfCommand;
-
-impl Command for HorizontalIfCommand {
+impl Command for VerticalIfCommand {
     fn execute(
         &self,
         ip: Arc<Mutex<IPState>>,
@@ -22,9 +21,9 @@ impl Command for HorizontalIfCommand {
             .lock()
             .map_err(|_| InterpreterError::LockError("Failed to lock IPState".to_string()))?;
         if a == 0 {
-            ip_locked.direction = Direction::Right
+            ip_locked.direction = Direction::Down
         } else {
-            ip_locked.direction = Direction::Left
+            ip_locked.direction = Direction::Up
         };
         Ok(())
     }

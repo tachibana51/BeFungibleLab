@@ -4,22 +4,19 @@ use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
 use std::sync::{Arc, Mutex};
 
+pub struct ReadNumberCommand;
 
-pub struct GraterThanCommand;
-
-impl Command for GraterThanCommand {
+impl Command for ReadNumberCommand {
     fn execute(
         &self,
         ip: Arc<Mutex<IPState>>,
         _interpreter: &dyn CommandGrid,
-        _io_handler: Arc<dyn IOHandle + Send + Sync>,
+        io_handler: Arc<dyn IOHandle + Send + Sync>,
     ) -> Result<(), InterpreterError> {
         let mut ip_locked = ip
             .lock()
             .map_err(|_| InterpreterError::ThreadError("Failed to lock IPState".to_string()))?;
-        let a = ip_locked.stk.pop();
-        let b = ip_locked.stk.pop();
-        ip_locked.stk.push(if b > a { 1 } else { 0 });
+        ip_locked.stk.push(io_handler.read_number().unwrap_or(0));
         Ok(())
     }
 }

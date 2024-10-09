@@ -1,12 +1,11 @@
 // src/usecases/commands/print_char_command.rs
 
 use super::command::Command;
+use crate::engine::commands::command::CommandGrid;
 use crate::entities::ip_state::IPState;
 use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
-use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
-
 
 pub struct PrintCharCommand;
 

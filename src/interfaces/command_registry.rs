@@ -1,26 +1,25 @@
 // src/interfaces/command_registry.rs
 
-use crate::usecases::commands::command::Command;
-use crate::usecases::commands::digit_command::DigitCommand;
-use crate::usecases::commands::down_command::DownCommand;
-use crate::usecases::commands::get_command::GetCommand;
-use crate::usecases::commands::greater_than_command::GraterThanCommand;
-use crate::usecases::commands::horizontal_if_command::HorizontalIfCommand;
-use crate::usecases::commands::left_command::LeftCommand;
-use crate::usecases::commands::put_command::PutCommand;
-use crate::usecases::commands::read_character_command::ReadCharacterCommand;
-use crate::usecases::commands::read_number_command::ReadNumberCommand;
-use crate::usecases::commands::right_command::RightCommand;
-use crate::usecases::commands::string_mode_command::StringModeCommand;
-use crate::usecases::commands::up_command::UpCommand;
-use crate::usecases::commands::vertical_if_command::VerticalIfCommand;
-use crate::usecases::commands::{
+use crate::engine::commands::command::Command;
+use crate::engine::commands::digit_command::DigitCommand;
+use crate::engine::commands::down_command::DownCommand;
+use crate::engine::commands::get_command::GetCommand;
+use crate::engine::commands::greater_than_command::GraterThanCommand;
+use crate::engine::commands::horizontal_if_command::HorizontalIfCommand;
+use crate::engine::commands::left_command::LeftCommand;
+use crate::engine::commands::read_number_command::ReadNumberCommand;
+use crate::engine::commands::right_command::RightCommand;
+use crate::engine::commands::{
     add_command::AddCommand, divide_command::DivideCommand, drop_command::DropCommand,
     duplicate_top_command::DuplicateTopCommand, logical_not_command::LogicalNotCommand,
     modulo_command::ModuloCommand, multiply_command::MultiplyCommand,
     print_char_command::PrintCharCommand, print_number_command::PrintNumberCommand,
-    subtract_command::SubtractCommand, swap_command::SwapCommand,
-    terminate_command::TerminateCommand, thread_command::ThreadCommand,
+    string_mode_command::StringModeCommand, subtract_command::SubtractCommand,
+    swap_command::SwapCommand, terminate_command::TerminateCommand, thread_command::ThreadCommand,
+    up_command::UpCommand, vertical_if_command::VerticalIfCommand,
+};
+use crate::engine::commands::{
+    put_command::PutCommand, read_character_command::ReadCharacterCommand,
 };
 use std::collections::HashMap;
 use std::sync::Arc;
@@ -81,11 +80,11 @@ impl CommandRegistry {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::engine::commands::command::CommandGrid;
     use crate::entities::ip_state::IPState;
     use crate::entities::Direction;
     use crate::errors::InterpreterError;
     use crate::interfaces::IOHandle;
-    use crate::usecases::commands::command::CommandGrid;
     use std::sync::{Arc, Mutex};
 
     struct MockCommandGrid {

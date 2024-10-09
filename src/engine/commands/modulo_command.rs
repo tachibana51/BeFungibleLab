@@ -1,16 +1,15 @@
-// src/usecases/commands/divide_command.rs
+// src/usecases/commands/modulo_command.rs
 
 use super::command::Command;
+use crate::engine::commands::command::CommandGrid;
 use crate::entities::ip_state::IPState;
 use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
-use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
+pub struct ModuloCommand;
 
-pub struct DivideCommand;
-
-impl Command for DivideCommand {
+impl Command for ModuloCommand {
     fn execute(
         &self,
         ip: Arc<Mutex<IPState>>,
@@ -20,7 +19,7 @@ impl Command for DivideCommand {
         let a = interpreter.pop(ip.clone())? as isize;
         let b = interpreter.pop(ip.clone())? as isize;
         if a == 0 {
-            io_handler.write_error("Division by zero.")?;
+            io_handler.write_error("Modulo by zero.")?;
             let mut ip_locked = ip
                 .lock()
                 .map_err(|_| InterpreterError::LockError("Failed to lock IPState".to_string()))?;
@@ -29,7 +28,7 @@ impl Command for DivideCommand {
             let mut ip_locked = ip
                 .lock()
                 .map_err(|_| InterpreterError::LockError("Failed to lock IPState".to_string()))?;
-            ip_locked.stk.push((b / a) as usize);
+            ip_locked.stk.push((b % a) as usize);
         }
         Ok(())
     }

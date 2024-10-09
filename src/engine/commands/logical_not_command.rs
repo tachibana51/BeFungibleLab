@@ -1,26 +1,26 @@
-// src/usecases/commands/string_mode_command.rs
+// src/usecases/commands/logical_not_command.rs
 
 use super::command::Command;
+use crate::engine::commands::command::CommandGrid;
 use crate::entities::ip_state::IPState;
 use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
-use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
+pub struct LogicalNotCommand;
 
-pub struct StringModeCommand;
-
-impl Command for StringModeCommand {
+impl Command for LogicalNotCommand {
     fn execute(
         &self,
         ip: Arc<Mutex<IPState>>,
-        _interpreter: &dyn CommandGrid,
+        interpreter: &dyn CommandGrid,
         _io_handler: Arc<dyn IOHandle + Send + Sync>,
     ) -> Result<(), InterpreterError> {
+        let a = interpreter.pop(ip.clone())?;
         let mut ip_locked = ip
             .lock()
-            .map_err(|_| InterpreterError::ThreadError("Failed to lock IPState".to_string()))?;
-        ip_locked.string_mode_active = !ip_locked.string_mode_active;
+            .map_err(|_| InterpreterError::LockError("Failed to lock IPState".to_string()))?;
+        ip_locked.stk.push(if a == 0 { 1 } else { 0 });
         Ok(())
     }
 }

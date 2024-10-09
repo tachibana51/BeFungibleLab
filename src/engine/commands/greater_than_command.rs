@@ -1,17 +1,12 @@
-// src/usecases/commands/up_command.rs
-
-use super::command::Command;
+use super::command::{Command, CommandGrid};
 use crate::entities::ip_state::IPState;
-use crate::entities::Direction;
 use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
-use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
+pub struct GraterThanCommand;
 
-pub struct UpCommand;
-
-impl Command for UpCommand {
+impl Command for GraterThanCommand {
     fn execute(
         &self,
         ip: Arc<Mutex<IPState>>,
@@ -21,7 +16,9 @@ impl Command for UpCommand {
         let mut ip_locked = ip
             .lock()
             .map_err(|_| InterpreterError::ThreadError("Failed to lock IPState".to_string()))?;
-        ip_locked.direction = Direction::Up;
+        let a = ip_locked.stk.pop();
+        let b = ip_locked.stk.pop();
+        ip_locked.stk.push(if b > a { 1 } else { 0 });
         Ok(())
     }
 }

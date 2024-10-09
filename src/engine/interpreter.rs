@@ -1,9 +1,9 @@
 // src/usecases/interpreter.rs
 
+use crate::engine::commands::command::CommandGrid;
 use crate::entities::{CodeGrid, Direction, IPState};
 use crate::errors::InterpreterError;
 use crate::interfaces::{CommandResolve, IOHandle};
-use crate::usecases::commands::command::CommandGrid;
 use std::any::Any;
 use std::io::Write;
 use std::sync::{Arc, Condvar, Mutex};

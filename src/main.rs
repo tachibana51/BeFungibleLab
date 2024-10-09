@@ -1,17 +1,16 @@
 // src/main.rs
+mod engine;
 mod entities;
 mod errors;
 mod interfaces;
-mod usecases;
-
 use clap::{ArgAction, Parser};
+use engine::interpreter::Interpreter;
 use entities::code_grid::CodeGrid;
 use errors::InterpreterError;
 use interfaces::command_registry::CommandRegistry;
 use interfaces::ConsoleIOHandler;
 use std::sync::Arc;
 use std::{io, thread};
-use usecases::interpreter::Interpreter;
 /// Befunge Interpreter
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]

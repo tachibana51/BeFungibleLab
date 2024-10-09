@@ -1,16 +1,15 @@
-// src/usecases/commands/terminate_command.rs
+// src/usecases/commands/drop_command.rs
 
 use super::command::Command;
+use crate::engine::commands::command::CommandGrid;
 use crate::entities::ip_state::IPState;
 use crate::errors::InterpreterError;
 use crate::interfaces::IOHandle;
-use crate::usecases::commands::command::CommandGrid;
 use std::sync::{Arc, Mutex};
 
+pub struct DropCommand;
 
-pub struct TerminateCommand;
-
-impl Command for TerminateCommand {
+impl Command for DropCommand {
     fn execute(
         &self,
         ip: Arc<Mutex<IPState>>,
@@ -20,7 +19,7 @@ impl Command for TerminateCommand {
         let mut ip_locked = ip
             .lock()
             .map_err(|_| InterpreterError::LockError("Failed to lock IPState".to_string()))?;
-        ip_locked.terminated = true;
+        ip_locked.stk.pop();
         Ok(())
     }
 }
